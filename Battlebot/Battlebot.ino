@@ -1,6 +1,6 @@
 //https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads
 //http://playground.arduino.cc/Code/NewPing
-//http://diyhacking.com/projects/MPU6050.zip
+//https://github.com/jarzebski/Arduino-MPU6050
 
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
