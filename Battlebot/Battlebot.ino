@@ -67,5 +67,5 @@ void setup() {
 }
 
 void loop() {
-linefollow();
+
 }
