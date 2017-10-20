@@ -35,6 +35,26 @@ void forwardEngineRight(int speed)
   driving = true;
 }
 
+void turnRightDegree(int degree, int speed)
+{
+  yaw = 0;
+  turnRight(speed);
+  while(yaw > degree){
+    Serial.println(yaw);
+    yawGet();
+  }
+}
+
+void turnLeftDegree(int degree, int speed)
+{
+  yaw = 0;
+  turnLeft(speed);
+  while(yaw < degree){
+    Serial.println(yaw);
+    yawGet();
+  }
+}
+
 void backwardEngineLeft(int speed)
 {
   analogWrite(in3, -speed);
