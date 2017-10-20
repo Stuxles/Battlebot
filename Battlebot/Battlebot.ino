@@ -1,11 +1,13 @@
 //https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads
 //http://playground.arduino.cc/Code/NewPing
-//https://github.com/jarzebski/Arduino-MPU6050
+//http://diyhacking.com/projects/MPU6050.zip
 
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include <NewPing.h>
 
+#define LS 11  //left sensor
+#define RS 10  //right sensor
 #define TRIGGER_PIN 13
 #define ECHO_PIN 12
 #define MAX_DISTANCE 200
@@ -31,6 +33,9 @@ void setup() {
   Serial.println("The bluetooth gates are open.\n Connect to HC-05 from any other bluetooth device with 1234 as pairing key!.");
    
   pinMode(IR, INPUT); 
+
+
+
     
   // engine pins
   pinMode(in1, OUTPUT);
@@ -40,31 +45,5 @@ void setup() {
 }
 
 void loop() {
-//  detection = digitalRead(IR);
-//  if(detection != LOW){
-//    Serial.print("There is an obstacle!\n");
-//  }
-//  else{ 
-//    Serial.print("No obstacle!\n");
-//  }
-//  delay(500);    // in ms
-  
-  if(sonar.ping_cm() < 30 && sonar.ping_cm() != 0)
-  {
-    stopEngine();
-    delay(500);
-    turnLeft(100);
-    delay(450);
-    stopEngine();
-    delay(500);
-    if (sonar.ping_cm() < 30 && sonar.ping_cm() != 0){
-      turnRight(100);
-      delay(900);
-      stopEngine();
-      delay(500);
-    }
-  }else{
-    forwardEngineRight(100);
-    forwardEngineLeft(100);
-  }
+linefollow();
 }
