@@ -1,13 +1,3 @@
-
-
-
-
-
- 
-
-
-
-
 void linefollow() {
 
 if(digitalRead(LS) && digitalRead(RS)) //Move Forward

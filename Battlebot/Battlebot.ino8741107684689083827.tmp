@@ -5,9 +5,6 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include <NewPing.h>
-#include <MPU6050.h>
-
-MPU6050 mpu;
 
 #define LS 11  //left IR sensor
 #define RS 10  //right IR sensor
@@ -19,13 +16,6 @@ MPU6050 mpu;
 SoftwareSerial EEBlue(A0, A1); // RX | TX
 
 int detection = HIGH;    // no obstacle
-bool driving = false;
-
-// Timers
-unsigned long timer = 0;
-float timeStep = 0.01;
-// Yaw values
-float yaw = 0;
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
@@ -45,25 +35,6 @@ void setup() {
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
-
-    // Initialize MPU6050
-  while(!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))
-  {
-    Serial.println("Could not find a valid MPU6050 sensor, check wiring!");
-    delay(500);
-  }
-  
-  // Calibrate gyroscope. The calibration must be at rest.
-  // If you don't want calibrate, comment this line.
-  mpu.calibrateGyro();
-
-  // Set threshold sensivty. Default 3.
-  // If you don't want use threshold, comment this line or set 0.
-  mpu.setThreshold(1);
-
-  yawGet();
-  delay(1000);
-
 }
 
 void loop() {
