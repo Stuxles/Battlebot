@@ -1,6 +1,6 @@
 
 void maze() {
-  if (digitalRead(LS) && digitalRead(RS)){ // Turn left 90 degrees
+  if (digitalRead(LS) && digitalRead(RS)) { // Turn left 90 degrees
     stopEngine();
     delay(500);
     backwardEngineLeft(50);
@@ -9,16 +9,16 @@ void maze() {
     turnLeft(100);
     delay(500);
   }
-  if(!(digitalRead(LS)) && digitalRead(RS)) //Turn Left
+  if (!(digitalRead(LS)) && digitalRead(RS)) //Turn Left
   {
     turnLeft(100);
   }
-  if(digitalRead(LS) && !(digitalRead(RS))) //Turn Right
+  if (digitalRead(LS) && !(digitalRead(RS))) //Turn Right
   {
     turnRight(100);
   }
-  if(!(digitalRead(LS)) && !(digitalRead(RS))){ // Move forward
-      forwardEngineLeft(50);
-      forwardEngineRight(50);
+  if (!(digitalRead(LS)) && !(digitalRead(RS))) { // Move forward
+    forwardEngineLeft(50);
+    forwardEngineRight(50);
   }
 }

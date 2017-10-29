@@ -1,4 +1,3 @@
-
 void stopEngine()
 {
   digitalWrite(in1, LOW);
@@ -10,11 +9,11 @@ void stopEngine()
 
 void straightForward(int speed)
 {
-  if(yaw < -2){
-    turnLeft(speed);    
-  }else if(yaw > 2){
+  if (yaw < -2) {
+    turnLeft(speed);
+  } else if (yaw > 2) {
     turnRight(speed);
-  }else{
+  } else {
     forwardEngineLeft(speed);
     forwardEngineRight(speed);
   }
@@ -39,8 +38,8 @@ void turnRightDegree(int degree, int speed)
 {
   yaw = 0;
   turnRight(speed);
-  while(yaw > degree){
-    Serial.println(yaw);
+  while (yaw > degree) {
+    changeGame();
     yawGet();
   }
 }
@@ -49,8 +48,8 @@ void turnLeftDegree(int degree, int speed)
 {
   yaw = 0;
   turnLeft(speed);
-  while(yaw < degree){
-    Serial.println(yaw);
+  while (yaw < degree) {
+    changeGame();
     yawGet();
   }
 }

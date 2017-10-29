@@ -16,10 +16,24 @@ MPU6050 mpu;
 #define MAX_DISTANCE 200
 
 #include <SoftwareSerial.h>
-SoftwareSerial EEBlue(A0, A1); // RX | TX
+SoftwareSerial BT(A0, A1); // RX | TX
 
 int detection = HIGH;    // no obstacle
 bool driving = false;
+
+//Bluetooth Commando
+int btCommand = 5;
+int oldCommand = 5;
+//0 = custom > kruisje
+//1 = forward > Omhoog
+//2 = right > Rechts
+//3 = reverse > Onder
+//4 = left > Links
+//5 = stop > Select
+//6 = game 1 > vierkant
+//7 = game 2 > Driehoek
+//8 = game 3 > Rondje
+//9 = move to new game > start
 
 // Timers
 unsigned long timer = 0;
@@ -36,23 +50,23 @@ int in2 = 4;
 int in3 = 3;
 int in4 = 2;
 
-void setup() {    
+void setup() {
   Serial.begin(9600);
-  EEBlue.begin(9600);  //Default Baud for comm, it may be different for your Module. 
-  
+  BT.begin(38400);  //Default Baud for comm, it may be different for your Module.
+
   // engine pins
   pinMode(in1, OUTPUT);
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
 
-    // Initialize MPU6050
-  while(!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))
+  // Initialize MPU6050
+  while (!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))
   {
     Serial.println("Could not find a valid MPU6050 sensor, check wiring!");
     delay(500);
   }
-  
+
   // Calibrate gyroscope. The calibration must be at rest.
   // If you don't want calibrate, comment this line.
   mpu.calibrateGyro();
@@ -67,5 +81,5 @@ void setup() {
 }
 
 void loop() {
-
+  changeGame();
 }

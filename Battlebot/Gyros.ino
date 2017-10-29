@@ -9,6 +9,6 @@ void yawGet()
   yaw = yaw + norm.ZAxis * timeStep;
 
   // Wait to full timeStep period
-  delay((timeStep*1000) - (millis() - timer));
+  delay((timeStep * 1000) - (millis() - timer));
 }
 

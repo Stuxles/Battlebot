@@ -1,22 +1,49 @@
-void sonarDrive()
+void btUpdate()
 {
-    if(sonar.ping_cm() < 30 && sonar.ping_cm() != 0)
+  if (BT.available() > 0) {
+    btCommand = BT.readString().toInt();
+  }
+}
+
+void changeGame()
+{
+  btUpdate();
+  if (btCommand != oldCommand)
   {
-    stopEngine();
-    delay(500);
-    turnLeft(100);
-    delay(450);
-    stopEngine();
-    delay(500);
-    if (sonar.ping_cm() < 30 && sonar.ping_cm() != 0){
-      turnRight(100);
-      delay(900);
-      stopEngine();
-      delay(500);
+    switch (btCommand) {
+      case 0:
+        Serial.println("0");
+        break;
+      case 1:
+        straightForward(80);
+        break;
+      case 2:
+        turnRightDegree(90, 80);
+        break;
+      case 3:
+        turnLeftDegree(90, 80);
+        break;
+      case 4:
+        backwardEngineRight(80);
+        backwardEngineLeft(80);
+        break;
+      case 5:
+        stopEngine();
+        break;
+      case 6:
+        linefollow();
+        break;
+      case 7:
+        maze();
+        break;
+      case 8:
+        sonarDrive();
+        break;
+      case 9:
+        Serial.println("move to new game hier");
+        break;
     }
-  }else{
-    forwardEngineRight(100);
-    forwardEngineLeft(100);
+    oldCommand = btCommand;
   }
 }
 
