@@ -1,49 +1,39 @@
-void btUpdate()
-{
-  if (BT.available() > 0) {
-    btCommand = BT.readString().toInt();
-  }
-}
-
 void changeGame()
 {
-  btUpdate();
-  if (btCommand != oldCommand)
+  if (BT.available() > 0)
   {
-    switch (btCommand) {
-      case 0:
-        Serial.println("0");
+    switch (BT.read()) {
+      case 49:
+        forwardEngineLeft(80);
+        forwardEngineRight(80);
         break;
-      case 1:
-        straightForward(80);
+      case 50:
+        turnRight(80);
         break;
-      case 2:
-        turnRightDegree(90, 80);
-        break;
-      case 3:
-        turnLeftDegree(90, 80);
-        break;
-      case 4:
+      case 51:
         backwardEngineRight(80);
         backwardEngineLeft(80);
         break;
-      case 5:
+      case 52:
+        turnLeft(80);
+        break;
+      case 53:
         stopEngine();
         break;
-      case 6:
+      case 54:
         linefollow();
         break;
-      case 7:
+      case 55:
         maze();
         break;
-      case 8:
+      case 56:
         sonarDrive();
         break;
-      case 9:
-        Serial.println("move to new game hier");
+      case 57:
+        straightForward(80);
         break;
     }
-    oldCommand = btCommand;
+    BT.flush();
   }
 }
 

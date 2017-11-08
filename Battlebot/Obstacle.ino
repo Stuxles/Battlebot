@@ -1,5 +1,6 @@
 void sonarDrive()
 {
+  changeGame();
   if (sonar.ping_cm() < 30 && sonar.ping_cm() != 0)
   {
     stopEngine();
@@ -13,9 +14,12 @@ void sonarDrive()
       delay(900);
       stopEngine();
       delay(500);
+      sonarDrive();
     }
+    sonarDrive();
   } else {
     forwardEngineRight(100);
     forwardEngineLeft(100);
+    sonarDrive();
   }
 }

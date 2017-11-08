@@ -19,7 +19,6 @@ MPU6050 mpu;
 SoftwareSerial BT(A0, A1); // RX | TX
 
 int detection = HIGH;    // no obstacle
-bool driving = false;
 
 //Bluetooth Commando
 int btCommand = 5;
