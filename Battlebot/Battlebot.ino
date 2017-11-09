@@ -18,6 +18,8 @@ MPU6050 mpu;
 #include <SoftwareSerial.h>
 SoftwareSerial BT(A0, A1); // RX | TX
 
+unsigned long old_time; // VOOR DE TIMING VAN HET VERSTUREN
+
 int detection = HIGH;    // no obstacle
 
 //Bluetooth Commando
@@ -40,6 +42,8 @@ float timeStep = 0.01;
 // Yaw values
 float yaw = 0;
 
+int btvalue = 53;
+
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
 LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
@@ -58,6 +62,8 @@ void setup() {
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
+
+  old_time = millis();
 
   // Initialize MPU6050
   while (!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))

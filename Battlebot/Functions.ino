@@ -1,8 +1,22 @@
+void sendDataToServer(long botSpeed, long distance, long drivingTime) {
+  if (millis() - old_time > 250) {
+    char buf [4];
+    sprintf (buf, "%lu&%lu&%lu\n", botSpeed, distance, drivingTime);
+    BT.write(buf);
+    old_time = millis();
+  }
+}
+
 void changeGame()
 {
+  long dummySpeed = 300;
+  long dummyDistance = 400;
+  long dummyTime = random(800, 2000);
+
   if (BT.available() > 0)
+    btvalue = BT.read();
   {
-    switch (BT.read()) {
+    switch (btvalue) {
       case 49:
         forwardEngineLeft(80);
         forwardEngineRight(80);
@@ -35,5 +49,6 @@ void changeGame()
     }
     BT.flush();
   }
+  sendDataToServer(dummySpeed, dummyDistance, dummyTime);
 }
 

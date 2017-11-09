@@ -1,5 +1,5 @@
 void linefollow() {
-  changeGame();
+
 
   if (digitalRead(LS) && digitalRead(RS)) //Move Forward
   {
@@ -10,29 +10,26 @@ void linefollow() {
     //delay(500);
     //turnLeft(50);
     //delay(1000);
-  linefollow();
   }
 
   if (!(digitalRead(LS)) && digitalRead(RS)) //Turn Right
   {
     turnRight(100);
     //delay(200);
-    linefollow();
   }
 
   if (digitalRead(LS) && !(digitalRead(RS))) //Turn Left
   {
     turnLeft(100);
     //delay(200);
-    linefollow();
   }
 
   if (!(digitalRead(LS)) && !(digitalRead(RS))) // stop
   {
     forwardEngineLeft(50);
     forwardEngineRight(50);
-    linefollow();
   }
+    changeGame();
 
 
 
