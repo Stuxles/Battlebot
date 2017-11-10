@@ -17,14 +17,13 @@ MPU6050 mpu;
 
 #include <SoftwareSerial.h>
 SoftwareSerial BT(A0, A1); // RX | TX
-
+unsigned long start_time = millis();
 unsigned long old_time; // VOOR DE TIMING VAN HET VERSTUREN
 
 int detection = HIGH;    // no obstacle
 
   long dummySpeed = 0;
-  long dummyDistance = 400;
-  long dummyTime = random(800, 2000);
+  long dummyDistance = 10;
 
 //Bluetooth Commando
 int btCommand = 5;
@@ -68,6 +67,17 @@ void setup() {
   pinMode(in4, OUTPUT);
 
   old_time = millis();
+
+    lcd.begin(16,2);   // initialize the lcd for 16 chars 2 lines, turn on backlight
+  lcd.backlight(); // finish with backlight on  
+
+//-------- Write characters on the display ------------------
+// NOTE: Cursor Position: (CHAR, LINE) start at 0  
+  lcd.setCursor(0,0); //Start at character 4 on line 0
+  lcd.print("-->BetterBott<--");
+  lcd.setCursor(0,1);
+  lcd.print("--->INF1F2B!<---");
+
 
   // Initialize MPU6050
   while (!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))

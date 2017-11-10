@@ -16,37 +16,48 @@ void changeGame()
   {
     switch (btvalue) {
       case 1:
-        forwardEngineLeft(80);
-        forwardEngineRight(80);
+        dummySpeed = 120;
+        forwardEngineLeft(120);
+        forwardEngineRight(120);
         break;
       case 2:
-        turnRight(80);
+        dummySpeed = 60;
+        turnRight(120);
         break;
       case 3:
-        backwardEngineRight(80);
-        backwardEngineLeft(80);
+        dummySpeed = 120;
+        backwardEngineRight(120);
+        backwardEngineLeft(120);
         break;
       case 4:
-        turnLeft(80);
+        dummySpeed = 60;
+        turnLeft(120);
         break;
       case 5:
+        dummySpeed = 0;
         stopEngine();
         break;
-      case 6:
+      case 6: dummySpeed = 80;
         linefollow();
         break;
       case 7:
+        dummySpeed = 80;
         maze();
         break;
       case 8:
+        dummySpeed = 80;
         sonarDrive();
         break;
       case 9:
-        straightForward(80);
+        dummySpeed = 80;
+        newGame();
         break;
     }
     BT.flush();
   }
-  sendDataToServer(dummySpeed, dummyDistance, dummyTime);
+  if (dummySpeed >10){
+    dummyDistance = (dummySpeed /10) * ((millis() - start_time) / 1000);
+  }
+  sendDataToServer(dummySpeed, dummyDistance, (millis() - start_time) / 1000);
 }
 
