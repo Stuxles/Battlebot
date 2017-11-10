@@ -22,6 +22,10 @@ unsigned long old_time; // VOOR DE TIMING VAN HET VERSTUREN
 
 int detection = HIGH;    // no obstacle
 
+  long dummySpeed = 0;
+  long dummyDistance = 400;
+  long dummyTime = random(800, 2000);
+
 //Bluetooth Commando
 int btCommand = 5;
 int oldCommand = 5;

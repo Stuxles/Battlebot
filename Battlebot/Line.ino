@@ -30,7 +30,4 @@ void linefollow() {
     forwardEngineRight(50);
   }
     changeGame();
-
-
-
 }

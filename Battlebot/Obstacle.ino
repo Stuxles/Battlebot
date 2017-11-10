@@ -27,8 +27,8 @@ void sonarDrive()
       turnLeft(100);
       //delay(200);
     }
-    forwardEngineRight(100);
-    forwardEngineLeft(100);
+    forwardEngineRight(80);
+    forwardEngineLeft(80);
   }
   changeGame();
 }

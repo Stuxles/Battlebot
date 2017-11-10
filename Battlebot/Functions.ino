@@ -9,41 +9,39 @@ void sendDataToServer(long botSpeed, long distance, long drivingTime) {
 
 void changeGame()
 {
-  long dummySpeed = 300;
-  long dummyDistance = 400;
-  long dummyTime = random(800, 2000);
+
 
   if (BT.available() > 0)
     btvalue = BT.read();
   {
     switch (btvalue) {
-      case 49:
+      case 1:
         forwardEngineLeft(80);
         forwardEngineRight(80);
         break;
-      case 50:
+      case 2:
         turnRight(80);
         break;
-      case 51:
+      case 3:
         backwardEngineRight(80);
         backwardEngineLeft(80);
         break;
-      case 52:
+      case 4:
         turnLeft(80);
         break;
-      case 53:
+      case 5:
         stopEngine();
         break;
-      case 54:
+      case 6:
         linefollow();
         break;
-      case 55:
+      case 7:
         maze();
         break;
-      case 56:
+      case 8:
         sonarDrive();
         break;
-      case 57:
+      case 9:
         straightForward(80);
         break;
     }
