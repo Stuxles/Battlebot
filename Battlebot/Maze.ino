@@ -21,5 +21,4 @@ void maze() {
     forwardEngineLeft(50);
     forwardEngineRight(50);
   }
-  changeGame();
 }

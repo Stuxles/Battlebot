@@ -16,19 +16,26 @@ void sonarDrive()
       delay(500);
     }
   } else {
-    if (!(digitalRead(LS)) && digitalRead(RS)) //Turn Right
-    {
-      turnRight(100);
-      //delay(200);
-    }
-
-    if (digitalRead(LS) && !(digitalRead(RS))) //Turn Left
+    if (digitalRead(LS) == true && digitalRead(RS) == true) { // Turn left 90 degrees
+    stopEngine();
+    delay(500);
+    backwardEngineLeft(50);
+    backwardEngineRight(50);
+    delay(500);
+    turnLeft(100);
+    delay(500);
+  }
+    if (digitalRead(RS) == true) //Turn Left
     {
       turnLeft(100);
-      //delay(200);
+      delay(100);
+    }
+    if (digitalRead(LS) == true) //Turn Right
+    {
+      turnRight(100);
+      delay(100);
     }
     forwardEngineRight(80);
     forwardEngineLeft(80);
   }
-  changeGame();
 }

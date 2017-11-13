@@ -25,9 +25,6 @@ int detection = HIGH;    // no obstacle
   long dummySpeed = 0;
   long dummyDistance = 10;
 
-//Bluetooth Commando
-int btCommand = 5;
-int oldCommand = 5;
 //0 = custom > kruisje
 //1 = forward > Omhoog
 //2 = right > Rechts
@@ -45,7 +42,7 @@ float timeStep = 0.01;
 // Yaw values
 float yaw = 0;
 
-int btvalue = 53;
+int btvalue = 5;
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 

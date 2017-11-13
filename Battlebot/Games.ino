@@ -5,9 +5,11 @@ void newGame() {
   {
     stopEngine();
     delay(500);
-    backwardEngineLeft(30);
-    backwardEngineRight(30);
-    //delay(500);
+    forwardEngineLeft(50);
+    forwardEngineRight(50);
+    delay(500);
+    stopEngine();
+    delay(100);
     //turnLeft(50);
     //delay(1000);
   }
@@ -29,5 +31,4 @@ void newGame() {
     forwardEngineLeft(50);
     forwardEngineRight(50);
   }
-    changeGame();
 }

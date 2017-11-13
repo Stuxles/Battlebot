@@ -3,6 +3,7 @@ void linefollow() {
 
   if (digitalRead(LS) && digitalRead(RS)) //Move Forward
   {
+    
     stopEngine();
     delay(500);
     backwardEngineLeft(30);
@@ -29,5 +30,5 @@ void linefollow() {
     forwardEngineLeft(50);
     forwardEngineRight(50);
   }
-    changeGame();
+    
 }
